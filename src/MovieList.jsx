@@ -31,7 +31,7 @@ const MovieList = () => {
     }
 
     const deleteMovie = (i) => {
-        const updatedList = Movies.filter((index) => index !== i)
+        const updatedList = Movies.filter((_,index) => index !== i)
         localStorage.setItem("movies", JSON.stringify(updatedList))
         setMovies(updatedList)
     }

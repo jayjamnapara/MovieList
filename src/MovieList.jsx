@@ -11,12 +11,12 @@ const MovieList = () => {
     }, [])
 
     const addMovie = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        if (!Movie.trim()) return alert('Please enter the movie name');
+        if (!Movie.trim()) return alert('Please enter the movie name')
         const updatedMovie = edit !== null
             ? Movies.map((m, i) => i === edit ? Movie.trim() : m)
-            : [...Movies, Movie.trim()];
+            : [...Movies, Movie.trim()]
 
         localStorage.setItem("movies", JSON.stringify(updatedMovie))
         setMovies(updatedMovie)
@@ -37,21 +37,21 @@ const MovieList = () => {
     }
 
     return (
-        <div className='flex justify-center items-center min-h-screen bg-gradient-to-tr from-blue-400 to-cyan-800 transition-all duration-700'>
-            <div className='bg-gradient-to-tr from-cyan-800 to-blue-500 shadow-lg rounded-xl p-6 w-full max-w-lg'>
-                <h2 className='text-2xl font-bold text-center text-gray-100 mb-4'>Movie Watchlist - Jay Gajjar</h2>
+        <div className='flex justify-center items-center min-h-screen bg-gradient-to-tr from-blue-400 to-cyan-800 transition-all duration-700 px-4 sm:px-6 lg:px-8'>
+            <div className='bg-gradient-to-tr from-cyan-800 to-blue-500 shadow-lg rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-md sm:max-w-lg'>
+                <h2 className='text-xl sm:text-2xl font-bold text-center text-gray-100 mb-4'>Movie Watchlist - Jay Gajjar</h2>
 
                 {/* Input Field */}
                 <div className='space-y-4'>
                     <input
                         type="text"
                         placeholder='Enter The Movie Name'
-                        className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none'
+                        className='w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base'
                         value={Movie}
                         onChange={(e) => setMovie(e.target.value)}
                     />
                     <button
-                        className='w-full bg-gradient-to-bl from-sky-800 to-cyan-600 hover:bg-gradient-to-tr hover:from-sky-500 hover:to-cyan-800 text-white font-semibold py-3 rounded-lg transition transform duration-800'
+                        className='w-full bg-gradient-to-bl from-sky-800 to-cyan-600 hover:bg-gradient-to-tr hover:from-sky-500 hover:to-cyan-800 text-white font-semibold py-2 sm:py-3 rounded-lg transition transform duration-800 text-sm sm:text-base'
                         onClick={addMovie}
                     >
                         {edit !== null ? "Edit Movie" : "Add Movie"}
@@ -60,20 +60,20 @@ const MovieList = () => {
 
                 <div className='mt-6 space-y-3'>
                     {Movies.length === 0 ? (
-                        <p className='text-gray-300 text-center'>No Movies Added Yet...</p>
+                        <p className='text-gray-300 text-center text-sm sm:text-base'>No Movies Added Yet...</p>
                     ) : (
                         Movies.map((m, i) => (
-                            <div key={i} className='shadow-md shadow-blue-800 p-3 rounded-lg flex items-center justify-between'>
-                                <p className='text-gray-50 text-xl'>{m}</p>
-                                <div>
+                            <div key={i} className='shadow-md shadow-blue-800 p-3 rounded-lg flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0'>
+                                <p className='text-gray-50 text-base sm:text-xl'>{m}</p>
+                                <div className='flex space-x-2'>
                                     <button
-                                        className='bg-gradient-to-br from-cyan-800 to-blue-500 hover:bg-gradient-to-tr hover:from-cyan-500 hover:to-blue-800 text-white py-2 px-4 mx-2 rounded-xl transition transform duration-500'
+                                        className='bg-gradient-to-br from-cyan-800 to-blue-500 hover:bg-gradient-to-tr hover:from-cyan-500 hover:to-blue-800 text-white py-2 px-3 sm:px-4 rounded-xl transition transform duration-500 text-sm sm:text-base'
                                         onClick={() => editMovie(i)}
                                     >
                                         Edit
                                     </button>
                                     <button
-                                        className='bg-gradient-to-br from-rose-800 to-red-400 hover:bg-gradient-to-tr hover:from-rose-500 hover:to-red-800 text-white py-2 px-4 mx-2 rounded-xl transition transform duration-500'
+                                        className='bg-gradient-to-br from-rose-800 to-red-400 hover:bg-gradient-to-tr hover:from-rose-500 hover:to-red-800 text-white py-2 px-3 sm:px-4 rounded-xl transition transform duration-500 text-sm sm:text-base'
                                         onClick={() => deleteMovie(i)}
                                     >
                                         Delete
